@@ -59,6 +59,17 @@
 - Footer
     - Secondary navigation area, housing links, copyrights and other less prominent yet important information
 
-### Setting up environment and write minimal web page
-- Set up VSC
-- Set up live server in VSC
+### Well formed, valid and semantic HTML
+- Structured correctly:
+    - Open/close tags
+    - Nested elements
+    - Attributes in the correct format
+- Semantic web is set of different technologies such as OWL, RDF, SPARQL.
+- Semantic HTML is a way of adding structure and meaning to the content in your HTML documents
+- Common semantic HTML tags:
+    - header
+    - nav 
+    - section
+    - article
+    - footer
+    - figure

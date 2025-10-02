@@ -1,0 +1,36 @@
+ 	<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Parsing Timer</title>
+</head>
+<body>
+    <h1>HTML Parsing Timer</h1>
+    <form id="upload-form">
+        <input type="file" id="file-input" accept=".html" />
+        <button type="submit">Upload and Parse</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('file-input');
+            if (fileInput.files.length === 0) {
+                alert('Please select an HTML file.');
+                return;
+            }
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const startTime = performance.now();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(e.target.result, 'text/html');
+                const endTime = performance.now();
+                const parseTime = endTime - startTime;
+                document.getElementById('result').textContent = `Parsed in ${parseTime.toFixed(2)} milliseconds.`;
+            };
+            reader.readAsText(file);
+        });
+    </script>
+</body>
+</html>

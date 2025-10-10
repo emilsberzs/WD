@@ -1,0 +1,28 @@
+{
+    "books":[
+       {"id":1, 
+        "title":"Bad books",
+        "author":"unknown",
+        "genre":"science",
+        "price":12
+        },
+       {"id":2, 
+        "title":"Crime Book",
+        "author":"Authors name",
+        "genre":"crime",
+        "price":19
+        },
+       {"id":3, 
+        "title":"Nature Book",
+        "author":"unknown",
+        "genre":"nature",
+        "price":27
+        },
+       {"id":4, 
+        "title":"Plant Book",
+        "author":"Authors name",
+        "genre":"nature",
+        "price":9
+        }
+    ]
+}

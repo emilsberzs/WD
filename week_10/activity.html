@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h1>Book Library</h1>
+    
+    <h2>All Books</h2>
+    <div id="books"></div>
+
+    <h2>All Authors</h2>
+    <div id="authors"></div>
+
+    <h2>All Categories</h2>
+    <div id="categories"></div>
+
+    <h2>Add a New Book</h2>
+    <form id="addBookForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+        <label for="authorId">Author ID:</label>
+        <input type="number" id="authorId" name="authorId" required>
+        <label for="genreId">Genre ID:</label>
+        <input type="number" id="genreId" name="genreId" required>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <h2>Books by Author</h2>
+    <form id="booksByAuthorForm">
+        <label for="authorId">Author ID:</label>
+        <input type="number" id="authorId" name="authorId" required>
+        <button type="submit">Get Books</button>
+    </form>
+    <div id="booksByAuthor"></div>
+
+    <h2>Books by Category</h2>
+    <form id="booksByCategoryForm">
+        <label for="categoryId">Category ID:</label>
+        <input type="number" id="categoryId" name="categoryId" required>
+        <button type="submit">Get Books</button>
+    </form>
+    <div id="booksByCategory"></div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    fetchBooks();
+    fetchAuthors();
+    fetchCategories();
+    document.getElementById('addBookForm').addEventListener('submit', addBook);
+    document.getElementById('booksByAuthorForm').addEventListener('submit', getBooksByAuthor);
+    document.getElementById('booksByCategoryForm').addEventListener('submit', getBooksByCategory);
+});
+
+function fetchBooks() {
+    fetch('http://localhost:3000/api/books')
+        .then(response => response.json())
+        .then(data => {
+            const booksDiv = document.getElementById('books');
+            booksDiv.innerHTML = data.map(book => `<p>${book.title} by ${book.author}</p>`).join('');
+        })
+        .catch(error => console.error('Error fetching books:', error));
+}
+
+function fetchAuthors() {
+    fetch('http://localhost:3000/api/authors')
+        .then(response => response.json())
+        .then(data => {
+            const authorsDiv = document.getElementById('authors');
+            authorsDiv.innerHTML = data.map(author => `<p>${author.author}</p>`).join('');
+        })
+        .catch(error => console.error('Error fetching authors:', error));
+}
+
+function fetchCategories() {
+    fetch('http://localhost:3000/api/categories')
+        .then(response => response.json())
+        .then(data => {
+            const categoriesDiv = document.getElementById('categories');
+            categoriesDiv.innerHTML = data.map(category => `<p>${category.genre}</p>`).join('');
+        })
+        .catch(error => console.error('Error fetching categories:', error));
+}
+
+function addBook(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const newBook = {
+        title: formData.get('title'),
+        author: formData.get('author'),
+        genre: formData.get('genre'),
+        author_id: parseInt(formData.get('authorId'), 10),
+        genre_id: parseInt(formData.get('genreId'), 10)
+    };
+
+    fetch('http://localhost:3000/api/books', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newBook)
+    })
+    .then(response => response.json())
+    .then(book => {
+        const booksDiv = document.getElementById('books');
+        booksDiv.innerHTML += `<p>${book.title} by ${book.author}</p>`;
+    })
+    .catch(error => console.error('Error adding book:', error));
+}
+
+function getBooksByAuthor(event) {
+    event.preventDefault();
+    const authorId = parseInt(event.target.authorId.value, 10);
+
+    fetch(`http://localhost:3000/api/author/${authorId}/books`)
+        .then(response => response.json())
+        .then(data => {
+            const booksByAuthorDiv = document.getElementById('booksByAuthor');
+            booksByAuthorDiv.innerHTML = data.map(book => `<p>${book.title}</p>`).join('');
+        })
+        .catch(error => console.error('Error fetching books by author:', error));
+}
+
+function getBooksByCategory(event) {
+    event.preventDefault();
+    const categoryId = parseInt(event.target.categoryId.value, 10);
+
+    fetch(`http://localhost:3000/api/category/${categoryId}/books`)
+        .then(response => response.json())
+        .then(data => {
+            const booksByCategoryDiv = document.getElementById('booksByCategory');
+            booksByCategoryDiv.innerHTML = data.map(book => `<p>${book.title}</p>`).join('');
+        })
+        .catch(error => console.error('Error fetching books by category:', error));
+}
+</script>
+</html>

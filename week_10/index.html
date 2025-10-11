@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading JSON with JS</title>
+</head>
+<body>
+    <h1>Reading JSON with JavaScript</h1>
+    <p>Lorum Ipsum</p>
+    <div id="content"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded",() => {
+            console.log("DOMContentLoaded fired")
+            loadJSON();
+        });
+    
+    function loadJSON(){
+        ///Use  async promise syntax
+        fetch("http://localhost:3000/api/books")
+        .then(response => response.json()) ///Converts response to JSON object
+        .then(jsonData => {
+            parseJSON(jsonData); /// Parses the JSON file with another function
+        })
+        /// If exception happens in the bove code, log out the error
+        .catch(error => {
+            console.log("Caught Error")
+            console.log(error)
+        })
+    }
+    
+    function parseJSON(jsonData){
+        console.log(jsonData)
+        
+        /// Get the needed elements and store in variable for access
+        let content_div = document.getElementById("content")
+        
+        /// Get total price of all books with Reduce
+        const total_price = jsonData.reduce((total, book) => total + Number(book.price), 0);
+
+        /// Create div for the total_price
+        let price_p = document.createElement('p')
+
+        /// Put total_price in the element
+        price_p.textContent = total_price
+
+        /// Append price_p to content_div
+        content_div.appendChild(price_p)
+        
+        /// Filter out books matching criteria
+        let filtered_books = jsonData.filter(book => book.genre === "Fiction")
+
+
+        
+        /// Next line would only loop over nature books
+        ///filtered_books.forEach(book => {
+        jsonData.forEach(book => {
+            /// Create elements
+            let book_div = document.createElement("div")
+            let h2_div = document.createElement("h2")
+            let p_tag = document.createElement("p")
+
+            ///put book title in h2 element, and author in p tag
+            h2_div.textContent = book.title
+            p_tag.textContent = book.author
+
+            /// Append book_div to content
+            content_div.appendChild(book_div);
+            /// And h2_div and p_tag to book_div
+            book_div.appendChild(h2_div)
+            book_div.appendChild(p_tag)
+        })
+    }
+
+    </script>
+</body>
+</html>

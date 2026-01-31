@@ -1,0 +1,72 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <!--Div for template engine to insert data into-->
+        <div id="content">
+
+        </div>
+        <script>
+            class SimpleTemplateEngine{
+                constructor(template_url){
+                    this.template_url = template_url
+                }
+
+                loadTemplate(){
+                    // Returns promise (fetch)
+                    return fetch(this.template_url)
+                    .then(response => response.text())
+                    .then(text => {
+                        this.template = text;
+                    })
+                }
+
+                //Parse and insert template into the DOM
+                renderTemplate(tag_id, data){
+                    
+                    const tag = document.getElementById(tag_id);
+
+                    //Sticks the text from fetched template url into element with tag_id, 
+                    //naive, hardcoded aproach, needs a aline for every key
+                    let output = this.template;
+
+                    //output = output.replace("{{title}}", data.title)
+                    //output = output.replace("{{content}}", data.content)
+                    //output = output.replace("{{subtitle}}", data.subtitle)
+
+                    //Better way to the the above, returns keys as a array of keys,
+                    //and calls output on all kv pairs. Flexible. Fairly elegant, using pattern matching
+
+                    //Object.keys(data).forEach(key => {
+                    //    let specialTag = "{{"+key+"}}";
+                    //    output = output.replace(specialTag, data[key])
+                    //})
+
+                    //Third way of doing same thing, most concise, using regex
+                    output = this.template.replace(/{{(\w+)}}/g,(match,variable) =>{
+                        return data[variable]
+                    })
+
+                    tag.innerHTML = output;
+                }
+            };
+
+            //Dummy data
+            const data = {
+                title: 'Page title',
+                content: 'Page content',
+                subtitle: 'Page subtitle',
+                subcontent: 'Subcontent, ehm, content?'
+            };
+            const tEngine = new SimpleTemplateEngine("template.html")
+
+            
+            tEngine.loadTemplate()
+            .then(() =>{
+                console.log("template loaded")
+                tEngine.renderTemplate('content', data)
+            })
+        </script>
+    </body>
+</html>

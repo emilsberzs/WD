@@ -1,0 +1,47 @@
+- 1990 First sign of internet in Latvia was in August of 1990, through Latvian University and Mathematics institute with their email service, and rapidly branched out from there
+- 1991 'Versija' starts to offer e-mail services to companies and individuals
+- 1992 2400Bit/s connection between Riga-Tallin and Riga-Moscow
+- 1993 Speed increases to 64Kbit/s
+- 1993 Broadband made available to public use
+- 1994 Lattelekom is established, largest Latvian communications provider
+- 1995 First latvian World Wide Web server started, www.vernet.lv, which is still operating today
+- 1995 Speed increase to 128Kbit/s
+- 1995 LMT launches 2G
+- 1996 Speed increase to 256Kbit/s
+- 1997 Lattelecom international connection reaches 1Mbit/s
+- 1998 Lattelecom implements ISDN(Integrated Services Digital Network), speed increases to 3Mbit/s
+- 2000 Lattelecom implements ADSL(Asymmetric Digital Subscriber Line)
+- 2000 First private Lattlecom DSL subscriber,with up to 2048Kbit/s download and 512Kbit/s download speeds, at equivalent to £130 a month in todays money
+- 2001 Lattelecom international resources reach 100Mbit/s
+- 2002 Lattelecom reaches 5000 DSL customers 
+- 2002 First ever WiFI acces point offered by Reval Hotel Latvia
+- 2003 Lattelecom DSL customers reach 10000
+- 2004 15% of households in Latvia has internet
+- 2005 Visit of USA president George W. Bush in Latvia is live streamed on www.apollo.lv
+- 2005 Lattlecom international recources reach 1.5Gbit/s
+- 2006 Lattelecom reaches 100'000 internet users
+- 2006 Bite Latvia launches 4G network
+- 2007 Lattelecom launches international 1Gbit/s broadband
+- 2008 Lattelecom international connection resources reach 11Gbit/s
+- 2009 Fiber broadband launched in Riga, capital city of Latvia
+- 2010 Lattelecom has 318'000 customers
+- 2010 Lattelecom international broadband resources reach 54Gbit/s
+- 2011 Fibre broadband available in 500'000 households
+- 2012 Latvia has 4th fastest internet in the world, 8.8Mbit/s
+- 2012 Baltic Highway is launched, 3700km of optic fibre, connecting Estonia, Latvia, Lithuania, Poland and Germany
+- 2012 More than 50% of Latvian population uses internet on daily basis
+- 2013 LMT launches forst 4G in Latvia
+- 2014 Latvia 6th fastest internet speed worldwide, at 12Mbps 
+- 2015 76% of households have access to broadband
+- 2016 91% of latvians use internet on daily basis
+- 2019 LMT launches first 5G in Latvia, on of the first countries in Europe to adopt the new 5G standart
+- 2021 TET launches 10Gbit/s broadband
+- 2022 Median fixed internet speed hovers around 60Mbps
+- 2023 Households with internet access reach 93%
+- 2024 80% of population use atleast one social network site
+- 2025 Fastest average download speed is 180Mbps, offered by Balticom
+- 2026 Latvia ranks as 54th worldwide for fixed internet speed and 30th for mobile inernet speeds.
+- First ever ISP in Latvia was LATNET.
+- In my year of birth, the maximum internet speed in Latvia was 64Kbit/s, which doubled to 128Kb/s in 1997 and was available at the cost of equivalent to £700, or if adjusted to inflation a whopping £1600 a month.
+- First WiFi access point was established in 2002.
+- After a slow start of adaptation, in 2008, Latvia had 4th fastest broadband in the world.  
